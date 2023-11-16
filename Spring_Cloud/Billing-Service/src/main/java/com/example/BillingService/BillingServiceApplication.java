@@ -14,6 +14,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.hateoas.PagedModel;
 
 import java.util.Date;
@@ -31,8 +32,10 @@ public class BillingServiceApplication {
 	CommandLineRunner start(ProductItemRepo productItemRepo,
 							BillRepository billRepository,
 							CustomerService customerService,
-							ProductService productService){
+							ProductService productService,
+							RepositoryRestConfiguration repositoryRestConfiguration){
 		return args -> {
+			repositoryRestConfiguration.exposeIdsFor(Bill.class);
 			Customer c1 = customerService.findCustomerById(1L);
 			Bill b1 = billRepository.save(new Bill(null,new Date(),c1.getId(),null,null));
 			PagedModel <Produit> produits = productService.findAllProducts();

@@ -7,7 +7,7 @@ import {BillComponent} from "./bill/bill.component";
 const routes: Routes = [
   {path:"products",component:ProductsComponent},
   {path:"customers",component:CustomersComponent},
-  {path:"bill",component:BillComponent}
+  {path:"bill/:customerId",component:BillComponent}
 ];
 
 @NgModule({

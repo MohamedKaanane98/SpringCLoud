@@ -17,7 +17,7 @@ public class Bill {
     private Long id;
     private Date BillingDate;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Long Customerid;
+    private Long customerid;
     @Transient
     private Customer customer;
     @OneToMany(mappedBy = "bill")
