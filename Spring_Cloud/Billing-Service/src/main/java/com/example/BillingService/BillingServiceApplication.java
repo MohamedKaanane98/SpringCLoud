@@ -39,9 +39,25 @@ public class BillingServiceApplication {
 			Customer c1 = customerService.findCustomerById(1L);
 			Bill b1 = billRepository.save(new Bill(null,new Date(),c1.getId(),null,null));
 			PagedModel <Produit> produits = productService.findAllProducts();
+			Produit produits1 = productService.findProductById(4L);
 			produits.getContent().forEach(produit -> {
 				productItemRepo.save(new ProductItem(null,produit.getId(),produit.getPrice(),50,null,b1));
 			});
+
+			productItemRepo.save(new ProductItem(null,produits1.getId(),produits1.getPrice(),44,null,b1));
+
+			Customer c2 = customerService.findCustomerById(2L);
+			Bill b2 = billRepository.save(new Bill(null,new Date(),c2.getId(),null,null));
+			produits.getContent().forEach(produit -> {
+				productItemRepo.save(new ProductItem(null,produit.getId(),produit.getPrice(),50,null,b2));
+			});
+			Bill b3 = billRepository.save(new Bill(null,new Date(),c1.getId(),null,null));
+			produits.getContent().forEach(produit -> {
+				productItemRepo.save(new ProductItem(null,produit.getId(),produit.getPrice(),50,null,b3));
+			});
+
+
+
 		};
 	}
 

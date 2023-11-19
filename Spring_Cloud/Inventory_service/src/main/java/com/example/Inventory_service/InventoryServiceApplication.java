@@ -21,6 +21,7 @@ public class InventoryServiceApplication {
 			productRepositorie.save(new Product(null,"Computer",900));
 			productRepositorie.save(new Product(null,"Phone",1200));
 			productRepositorie.save(new Product(null,"Printer",2500));
+			productRepositorie.save(new Product(null,"Television",5000));
 		};
 	}
 

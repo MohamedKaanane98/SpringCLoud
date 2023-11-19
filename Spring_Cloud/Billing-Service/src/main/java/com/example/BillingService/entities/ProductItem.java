@@ -24,4 +24,8 @@ public class ProductItem {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Bill bill;
 
+    public double getAmount(){
+        return price*quantite;
+    }
+
 }

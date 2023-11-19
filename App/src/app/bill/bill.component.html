@@ -1,1 +1,21 @@
-<p>bill works!</p>
+<div class="container">
+  <table class="table" style="margin-top: 30px;" *ngIf="bills">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Date</th>
+      <th>CustomerId</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let b of bills._embedded.bills">
+      <td>{{b.id}}</td>
+      <td>{{b.billingDate|date:'dd/mm/yyyy'}}</td>
+      <td>{{b.customerid}}</td>
+      <td>
+        <button class="btn btn-success" (click)="getBillDetails(b)">Details</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

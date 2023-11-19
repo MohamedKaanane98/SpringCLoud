@@ -1,0 +1,40 @@
+<div class="container" *ngIf="billsDetails">
+  <div class="card" style="margin-top: 20px;">
+
+    <div class="card-header bg-dark text-white">Bill Id : {{BillId}}</div>
+    <div class="card-header"  > Customer </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li class="list-group-item">Customer ID : {{billsDetails.customer.id}}</li>
+        <li class="list-group-item">Customer Name : {{billsDetails.customer.name}}</li>
+        <li class="list-group-item">Customer Email : {{billsDetails.customer.email}}</li>
+        <li class="list-group-item">Date Facture : {{billsDetails.billingDate|date:"dd/mm/yyyy"}}</li>
+      </ul>
+    </div>
+
+    <div class="card-header "  > ProductItems </div>
+    <div class="card-body">
+      <table class="table" >
+        <thead>
+          <tr>
+            <th>ProductID</th>
+            <th>Nom Produit</th>
+            <th>Prix</th>
+            <th>Quantite</th>
+            <th>Montant</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of billsDetails.productItems">
+            <td >{{p.produit.id}}</td>
+            <td >{{p.produit.name}}</td>
+            <td >{{p.price}}</td>
+            <td >{{p.quantite}}</td>
+            <td>{{p.amount}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-header bg-secondary text-bg-dark"> Prix Total à Payer : {{billsDetails.total}}</div>
+  </div>
+</div>

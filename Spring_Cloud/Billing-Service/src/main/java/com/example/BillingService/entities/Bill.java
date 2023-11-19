@@ -16,10 +16,18 @@ public class Bill {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date BillingDate;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(access = JsonProperty.Access.READ_WRITE)
     private Long customerid;
     @Transient
     private Customer customer;
     @OneToMany(mappedBy = "bill")
     private Collection<ProductItem> ProductItems;
+
+    public double getTotal(){
+        double somme=0;
+        for(ProductItem p :ProductItems){
+            somme+=p.getAmount();
+        }
+        return somme;
+    }
 }
