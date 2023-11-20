@@ -12,8 +12,15 @@
             <td>{{p.id}}</td>
             <td>{{p.name}}</td>
             <td>{{p.price}}</td>
+            <td>
+              <button (click)="handleDelete(p) "class="btn btn-outline-danger">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
           </tr>
       </tbody>
     </table>
-    <button class="btn-success">Ajouter Produit </button>
+    <button class="btn btn-outline-success ms-1" style="margin-top: 10px" routerLink="/newproducts">Ajouter Produit
+      <i class="bi bi-plus-circle text-success"></i>
+    </button>
 </div>

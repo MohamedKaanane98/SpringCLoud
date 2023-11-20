@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header bg-dark text-white">Ajouter Produits</div>
+    <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+      <div >
+        <label class="input-group-text" style="margin-top: 10px;">Name:</label>
+        <input type="text" class="form-control" formControlName="name">
+        <label class="input-group-text" style="margin-top: 10px;">Price:</label>
+        <input type="text" class="form-control" formControlName="price">
+        <button class="btn btn-outline-success" style="margin-top: 10px;" [disabled]="productForm.invalid">Ajouter</button>
+      </div>
+    </form>
+  </div>
+</div>
