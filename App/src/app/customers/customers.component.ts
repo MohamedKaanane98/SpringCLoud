@@ -57,4 +57,9 @@ export class CustomersComponent implements OnInit{
         }
       })
   }
+
+  handleEdit(p: Customer) {
+    this.router.navigateByUrl("/editcustomer/"+p.id);
+
+  }
 }

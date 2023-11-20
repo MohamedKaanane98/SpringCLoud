@@ -12,7 +12,7 @@ public class CustomerController {
     @Autowired
     private CustomerRepositories customerRepositories;
 
-    @GetMapping("/customers")
+    @GetMapping("/customersAll")
     public List<Customer> getCustomer(){
         return customerRepositories.findAll();
     }

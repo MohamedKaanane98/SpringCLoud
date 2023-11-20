@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ProductService} from "../services/product.service";
 import {Product} from "../model/product.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-products',
@@ -11,7 +12,7 @@ import {Product} from "../model/product.model";
 export class ProductsComponent implements OnInit {
   products: Array<Product>=[];
   public keyword:string="";
-  constructor(private productservice:ProductService) {
+  constructor(private router:Router,private productservice:ProductService) {
   }
 
   ngOnInit(): void {
@@ -49,5 +50,9 @@ export class ProductsComponent implements OnInit {
         }
       })
     }
+
+  handleEdit(p: Product) {
+      this.router.navigateByUrl("/editproduct/"+p.id);
+  }
 }
 

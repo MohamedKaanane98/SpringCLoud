@@ -6,6 +6,8 @@ import {BillComponent} from "./bill/bill.component";
 import {BillDetailsComponent} from "./bill-details/bill-details.component";
 import {NewProductComponent} from "./new-product/new-product.component";
 import {NewCustomerComponent} from "./new-customer/new-customer.component";
+import {EditProductComponent} from "./edit-product/edit-product.component";
+import {EditCustomerComponent} from "./edit-customer/edit-customer.component";
 
 const routes: Routes = [
   {path:"products",component:ProductsComponent},
@@ -13,7 +15,9 @@ const routes: Routes = [
   {path:"bill/:Customerid",component:BillComponent},
   {path:"billDetails/:Billid",component:BillDetailsComponent},
   {path:"newproducts",component:NewProductComponent},
-  {path:"newcustomer",component:NewCustomerComponent}
+  {path:"newcustomer",component:NewCustomerComponent},
+  {path:"editproduct/:id",component:EditProductComponent},
+  {path:"editcustomer/:id",component:EditCustomerComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            CustomerId: {{CustomerId}}
+        </div>
+        <div class="card-body" *ngIf="CustomerFormGroup">
+            <form [formGroup]="CustomerFormGroup" (ngSubmit)="updateCustomer()">
+                <div >
+                    <label class="input-group-text" style="margin-top: 10px;">Name:</label>
+                    <input type="text" class="form-control" formControlName="name">
+                    <label class="input-group-text" style="margin-top: 10px;">Price:</label>
+                    <input type="text" class="form-control" formControlName="email">
+                    <button class="btn btn-outline-success" style="margin-top: 10px;" [disabled]="CustomerFormGroup.invalid">Modifier</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

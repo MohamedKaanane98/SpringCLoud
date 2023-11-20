@@ -11,6 +11,8 @@ import { BillDetailsComponent } from './bill-details/bill-details.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NewProductComponent } from './new-product/new-product.component';
 import { NewCustomerComponent } from './new-customer/new-customer.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { NewCustomerComponent } from './new-customer/new-customer.component';
     BillComponent,
     BillDetailsComponent,
     NewProductComponent,
-    NewCustomerComponent
+    NewCustomerComponent,
+    EditProductComponent,
+    EditCustomerComponent
   ],
   imports: [
     BrowserModule,
