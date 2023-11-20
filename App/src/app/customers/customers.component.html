@@ -1,4 +1,11 @@
 <div class="container">
+  <div class="input-group" style="margin-top: 10px;">
+    <label class="input-group-text">Keyword</label>
+    <input class="input-group-text" type="text" [(ngModel)]="keyword">
+    <button (click)="searchCustomer()" class="btn btn-outline-success">
+      <i class="bi bi-search" ></i>
+    </button>
+  </div>
   <table class="table" style="margin-top: 30px;" *ngIf="customers">
     <thead>
     <tr>
@@ -8,7 +15,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let p of customers._embedded.customers">
+    <tr *ngFor="let p of customers">
       <td>{{p.id}}</td>
       <td>{{p.name}}</td>
       <td>{{p.email}}</td>
@@ -23,5 +30,8 @@
     </tr>
     </tbody>
   </table>
+  <button class="btn btn-outline-success ms-1" style="margin-top: 10px" routerLink="/newcustomer">Ajouter Customer
+    <i class="bi bi-plus-circle text-success"></i>
+  </button>
 </div>
 

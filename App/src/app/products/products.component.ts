@@ -9,7 +9,7 @@ import {Product} from "../model/product.model";
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  products: any;
+  products: Array<Product>=[];
   public keyword:string="";
   constructor(private productservice:ProductService) {
   }
@@ -37,5 +37,17 @@ export class ProductsComponent implements OnInit {
       })
   }
 
+    searchProduct() {
+      this.productservice.getProducts().subscribe({
+        next:value => {
+          this.products=value
+          if(this.keyword==""){
+            this.getProduct();
+          }else{
+            this.products=this.products.filter(p=>p.name.toLowerCase().includes(this.keyword.toLowerCase()))
+          }
+        }
+      })
+    }
 }
 

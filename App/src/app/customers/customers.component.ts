@@ -10,7 +10,8 @@ import {CustomerService} from "../services/customer.service";
   styleUrls: ['./customers.component.css']
 })
 export class CustomersComponent implements OnInit{
-  customers:any;
+  customers:Array<Customer>=[];
+  public keyword: string="";
   constructor(private http:HttpClient , private router:Router,private customerservice:CustomerService) {
   }
   ngOnInit(): void {
@@ -18,7 +19,7 @@ export class CustomersComponent implements OnInit{
   }
 
   getCustomers(){
-    this.http.get("http://localhost:8088/CUSTOMER-SERVICE/customers").subscribe({
+    this.customerservice.getCustomer().subscribe({
       next:(data) =>{
         this.customers=data;
       },
@@ -41,5 +42,19 @@ export class CustomersComponent implements OnInit{
       }
     })
 
+  }
+
+  searchCustomer() {
+      this.customerservice.getCustomer().subscribe({
+        next:value => {
+          this.customers=value;
+          if(this.keyword==""){
+            this.getCustomers()
+          } else {
+            this.customers=this.customers.filter(c => c.name.toLowerCase().includes(this.keyword.toLowerCase()))
+            console.log("customer",this.customers);
+          }
+        }
+      })
   }
 }
