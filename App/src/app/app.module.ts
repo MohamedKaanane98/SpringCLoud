@@ -13,6 +13,9 @@ import { NewProductComponent } from './new-product/new-product.component';
 import { NewCustomerComponent } from './new-customer/new-customer.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
+import {NgOptimizedImage} from "@angular/common";
+import { ProductDetailsComponent } from './product-details/product-details.component';
+
 
 @NgModule({
   declarations: [
@@ -24,13 +27,14 @@ import { EditCustomerComponent } from './edit-customer/edit-customer.component';
     NewProductComponent,
     NewCustomerComponent,
     EditProductComponent,
-    EditCustomerComponent
+    EditCustomerComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,FormsModule
+    ReactiveFormsModule, FormsModule, NgOptimizedImage
 
   ],
   providers: [],

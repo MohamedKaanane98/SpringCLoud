@@ -7,4 +7,5 @@ public class Produit {
     private Long id;
     private String name;
     private double price;
+    private boolean checked;
 }

@@ -13,6 +13,7 @@ export class ProductService {
   public getProducts():Observable<Array<Product>>{
     return this.http.get<Array<Product>>("http://localhost:8088/INVENTORY-SERVICE/productsAl")
   }
+
   public deleteProducts(product:Product){
     return this.http.delete(`http://localhost:8088/INVENTORY-SERVICE/delete/${product.id}`)
   }

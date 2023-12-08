@@ -22,7 +22,9 @@ export class EditProductComponent implements OnInit{
         this.productFormGroup=this.fb.group({
           id:this.fb.control(product.id),
           name:this.fb.control(product.name),
-          price:this.fb.control(product.price)
+          price:this.fb.control(product.price),
+          image:this.fb.control(product.image),
+          description:product.description,
         })
       }
     })
@@ -32,10 +34,10 @@ export class EditProductComponent implements OnInit{
     let product = this.productFormGroup.value;
     this.productservice.updateproducts(product).subscribe({
       next:value => {
-        alert(JSON.stringify(value));
+        alert("Produit Modifié Avec Succés! ");
         this.router.navigateByUrl("/products");
       }
     });
-
   }
+
 }

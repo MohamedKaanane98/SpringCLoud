@@ -1,38 +1,37 @@
 <div class="container">
-    <div class="input-group" style="margin-top: 10px;">
-        <label class="input-group-text">Keyword</label>
-        <input class="input-group-text" type="text" [(ngModel)]="keyword">
-        <button (click)="searchProduct()" class="btn btn-outline-success">
-            <i class="bi bi-search" ></i>
-        </button>
-    </div>
-    <table class="table" style="margin-top: 30px;" *ngIf="products">
-      <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let p of products">
-            <td>{{p.id}}</td>
-            <td>{{p.name}}</td>
-            <td>{{p.price}}</td>
-            <td>
-              <button (click)="handleDelete(p) "class="btn btn-outline-danger">
-                <i class="bi bi-trash"></i>
-              </button>
-            </td>
-              <td>
-                  <button (click)="handleEdit(p) "class="btn btn-outline-danger">
-                      <i class="bi bi-pencil"></i>
-                  </button>
-              </td>
-          </tr>
-      </tbody>
-    </table>
-    <button class="btn btn-outline-success ms-1" style="margin-top: 10px" routerLink="/newproducts">Ajouter Produit
-      <i class="bi bi-plus-circle text-success"></i>
+  <div class="input-group" style="margin-top: 10px;">
+    <label class="input-group-text">Keyword</label>
+    <input class="form-control" type="text" [(ngModel)]="keyword">
+    <button (click)="searchProduct()" class="btn btn-outline-success">
+      <i class="bi bi-search"></i>
     </button>
+  </div>
+
+  <button class="btn btn-outline-success mt-4" routerLink="/newproducts">
+    Ajouter Produit <i class="bi bi-plus-circle text-success"></i>
+  </button>
+
+  <div class="row mt-4">
+    <div *ngFor="let p of products" class="col-md-4 mb-4">
+      <div class="card">
+        <a [routerLink]="['/detailsproducts', p.id]">
+          <div *ngIf="p.image">
+            <img [ngSrc]="p.image" class="card-img-top bordered-image" alt="{{ p.name }}" width="50" height="350">
+          </div>
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{ p.name }}</h5>
+          <p class="card-text">Descrition: {{ p.description | slice:0:100  }}...</p>
+          <p class="card-text">Price: {{ p.price }}</p>
+          <button (click)="handleDelete(p)" class="btn btn-outline-danger ms-2">
+            <i class="bi bi-trash"></i> Delete
+          </button>
+          <button (click)="handleEdit(p)" class="btn btn-outline-secondary ms-2">
+            <i class="bi bi-pencil"></i> Edit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

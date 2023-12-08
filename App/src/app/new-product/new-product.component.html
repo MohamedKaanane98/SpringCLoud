@@ -1,14 +1,32 @@
 <div class="container">
   <div class="card">
     <div class="card-header bg-dark text-white">Ajouter Produits</div>
-    <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
-      <div >
-        <label class="input-group-text" style="margin-top: 10px;">Name:</label>
-        <input type="text" class="form-control" formControlName="name">
-        <label class="input-group-text" style="margin-top: 10px;">Price:</label>
-        <input type="text" class="form-control" formControlName="price">
-        <button class="btn btn-outline-success" style="margin-top: 10px;" [disabled]="productForm.invalid">Ajouter</button>
+    <form [formGroup]="productForm" (ngSubmit)="saveProduct()" style="padding: 20px;">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nom du Produit :</label>
+        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Entrez le nom du produit">
       </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Prix :</label>
+        <input type="text" class="form-control" id="price" formControlName="price" placeholder="Entrez le prix du produit">
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Image :</label>
+        <select id="image" class="form-select" formControlName="image">
+          <option *ngFor="let imagePath of imagePaths" [value]="imagePath">
+            {{ imagePath }}
+          </option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description :</label>
+        <textarea class="form-control" id="description" formControlName="description" rows="3" placeholder="Entrez la description du produit"></textarea>
+      </div>
+
+      <button class="btn btn-success" [disabled]="productForm.invalid">Ajouter Produit</button>
     </form>
   </div>
 </div>

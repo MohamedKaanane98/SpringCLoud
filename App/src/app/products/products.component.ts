@@ -11,7 +11,10 @@ import {Router} from "@angular/router";
 })
 export class ProductsComponent implements OnInit {
   products: Array<Product>=[];
+  productsR :any;
   public keyword:string="";
+  public valeur !:boolean;
+  showFullDescription: { [key: number]: boolean } = {};
   constructor(private router:Router,private productservice:ProductService) {
   }
 
@@ -29,6 +32,8 @@ export class ProductsComponent implements OnInit {
       }
     })
   }
+
+
 
   handleDelete(p: any) {
       this.productservice.deleteProducts(p).subscribe({
@@ -54,5 +59,6 @@ export class ProductsComponent implements OnInit {
   handleEdit(p: Product) {
       this.router.navigateByUrl("/editproduct/"+p.id);
   }
+
 }
 
