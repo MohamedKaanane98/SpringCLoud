@@ -1,0 +1,65 @@
+/* Custom Styles for About Us Section */
+.container {
+  background-color: #f8f9fa; /* Background color for the container */
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+h1, h2, p {
+  color: #343a40; /* Text color */
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #28a745; /* Green color for h2 */
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Image Styling */
+.img-fluid {
+  border-radius: 10px; /* Add border-radius to the image */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow to the image */
+}
+
+/* Background color for the row containing the text */
+.text-row {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Positioning */
+.img-container {
+  order: 1; /* Set the image container to appear first on larger screens */
+  width: 350px;
+  height: 320px;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .img-container {
+    order: 2; /* Set the image container to appear second on smaller screens */
+    margin-top: 40px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}

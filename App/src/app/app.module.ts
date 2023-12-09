@@ -15,6 +15,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import {NgOptimizedImage} from "@angular/common";
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     EditProductComponent,
     EditCustomerComponent,
     ProductDetailsComponent,
+    HomeComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

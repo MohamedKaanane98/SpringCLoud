@@ -1,0 +1,24 @@
+/* Style spécifique pour la première image */
+.row .col-md-4:nth-child(1) img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Style spécifique pour la deuxième image */
+.row .col-md-4:nth-child(2) img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Style spécifique pour la troisième image */
+.row .col-md-4:nth-child(3) img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+

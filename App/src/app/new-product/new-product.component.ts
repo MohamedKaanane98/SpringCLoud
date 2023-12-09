@@ -17,8 +17,13 @@ export class NewProductComponent implements OnInit{
     'assets/pcgeant.png',
     'assets/printer.jpg',
     'assets/television.jpg',
-    'assets/watch.jpg',
+    'assets/watch.png',
     'assets/camera.jpg',
+    'assets/pc2.png',
+    'assets/laptop.png',
+    'assets/television2.jpg',
+
+
   ];
   constructor(private router:Router , private fb : FormBuilder,private productservice:ProductService) {
   }

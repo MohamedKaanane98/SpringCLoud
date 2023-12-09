@@ -9,9 +9,12 @@ import {NewCustomerComponent} from "./new-customer/new-customer.component";
 import {EditProductComponent} from "./edit-product/edit-product.component";
 import {EditCustomerComponent} from "./edit-customer/edit-customer.component";
 import {ProductDetailsComponent} from "./product-details/product-details.component";
+import {HomeComponent} from "./home/home.component";
+import {AboutComponent} from "./about/about.component";
 
 
 const routes: Routes = [
+  {path:"",component:HomeComponent},
   {path:"products",component:ProductsComponent},
   {path:"customers",component:CustomersComponent},
   {path:"bill/:Customerid",component:BillComponent},
@@ -21,6 +24,7 @@ const routes: Routes = [
   {path:"editproduct/:id",component:EditProductComponent},
   {path:"detailsproducts/:id",component:ProductDetailsComponent},
   {path:"editcustomer/:id",component:EditCustomerComponent},
+  {path:"about",component:AboutComponent}
 ];
 
 @NgModule({
