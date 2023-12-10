@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=-width, initial-scale=1.0">
+  <title>Register</title>
+</head>
+<body>
+<form [formGroup]="RegisterForm" (ngSubmit)="saveCustomer()">
+  <h1><b>Register</b></h1>
+  <div class="mb-3" style="margin-top: 20px">
+    <label for="name" class="form-label"> Username:</label>
+    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Entrer username">
+  </div>
+  <div class="mb-3" style="margin-top: 20px">
+    <label for="email" class="form-label">Email:</label>
+    <input type="text" class="form-control" id="email" formControlName="email" placeholder="Entrer votre email">
+  </div>
+  <div class="mb-3" style="margin-top: 20px">
+    <label for="password" class="form-label">Password:</label>
+    <input type="password" class="form-control" id="password" formControlName="password" placeholder="Entrer votre password">
+  </div>
+  <button class="btn btn-success" [disabled]="RegisterForm.invalid">Register</button>
+  <div class="register-link" style="padding: 10px">
+    Vous avez deja un compte ? <a routerLink="/login">Login</a>
+  </div>
+</form>
+</body>
+</html>

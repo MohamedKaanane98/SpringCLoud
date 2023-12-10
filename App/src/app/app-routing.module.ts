@@ -11,6 +11,8 @@ import {EditCustomerComponent} from "./edit-customer/edit-customer.component";
 import {ProductDetailsComponent} from "./product-details/product-details.component";
 import {HomeComponent} from "./home/home.component";
 import {AboutComponent} from "./about/about.component";
+import {LoginComponent} from "./login/login.component";
+import {RegisterComponent} from "./register/register.component";
 
 
 const routes: Routes = [
@@ -24,7 +26,9 @@ const routes: Routes = [
   {path:"editproduct/:id",component:EditProductComponent},
   {path:"detailsproducts/:id",component:ProductDetailsComponent},
   {path:"editcustomer/:id",component:EditCustomerComponent},
-  {path:"about",component:AboutComponent}
+  {path:"about",component:AboutComponent},
+  {path:"login",component:LoginComponent},
+  {path:"register",component:RegisterComponent}
 ];
 
 @NgModule({

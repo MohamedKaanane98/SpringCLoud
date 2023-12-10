@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+<body>
+<form [formGroup]="LoginForm">
+  <h1><b>Login</b></h1>
+  <div class="mb-3" style="margin-top: 20px">
+    <label for="username" class="form-label">Username:</label>
+    <input type="text" class="form-control" id="username" formControlName="username" placeholder="Entrer username">
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password :</label>
+    <input type="text" class="form-control" id="password" formControlName="password" placeholder="Entrer le password">
+  </div>
+  <button class="btn btn-success" [disabled]="LoginForm.invalid">Login</button>
+  <div class="register-link" style="padding: 10px">
+    Vous n'avez pas de Compte ? <a routerLink="/register">Register</a>
+  </div>
+</form>
+</body>
+</html>

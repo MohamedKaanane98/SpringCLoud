@@ -17,4 +17,5 @@ public class Customer {
     Long id;
     String Name;
     String Email;
+    String Password;
 }
