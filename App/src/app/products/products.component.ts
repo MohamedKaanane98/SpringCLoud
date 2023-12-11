@@ -10,11 +10,13 @@ import {Router} from "@angular/router";
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  products: Array<Product>=[];
-  productsR :any;
+  products : Array<Product>=[];
   public keyword:string="";
-  public valeur !:boolean;
-  showFullDescription: { [key: number]: boolean } = {};
+  totalpages:number=0;
+  pageSize:number=3;
+  currentPage:number=0;
+  totalproducts:number=0;
+
   constructor(private router:Router,private productservice:ProductService) {
   }
 
@@ -23,17 +25,22 @@ export class ProductsComponent implements OnInit {
   }
 
   getProduct(){
-    this.productservice.getProducts().subscribe({
+    this.productservice.getProducts(this.keyword,this.currentPage,this.pageSize).subscribe({
       next: (data) => {
-        this.products = data;
+        // @ts-ignore
+          this.products = data._embedded.products;
+          // @ts-ignore
+          this.totalproducts = data.page.totalElements;
+          this.totalpages=Math.floor(this.totalproducts/this.pageSize);
+          if(this.totalproducts % this.pageSize !=0){
+            this.totalpages=this.totalpages+1;
+          }
       },
       error: err => {
         console.log(err)
       }
     })
   }
-
-
 
   handleDelete(p: any) {
       this.productservice.deleteProducts(p).subscribe({
@@ -43,22 +50,13 @@ export class ProductsComponent implements OnInit {
       })
   }
 
-    searchProduct() {
-      this.productservice.getProducts().subscribe({
-        next:value => {
-          this.products=value
-          if(this.keyword==""){
-            this.getProduct();
-          }else{
-            this.products=this.products.filter(p=>p.name.toLowerCase().includes(this.keyword.toLowerCase()))
-          }
-        }
-      })
-    }
-
   handleEdit(p: Product) {
       this.router.navigateByUrl("/editproduct/"+p.id);
   }
 
+    hadledotopage(page: number) {
+      this.currentPage=page;
+      this.getProduct();
+    }
 }
 

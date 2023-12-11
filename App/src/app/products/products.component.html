@@ -2,15 +2,17 @@
   <div class="input-group" style="margin-top: 10px;">
     <label class="input-group-text">Keyword</label>
     <input class="form-control" type="text" [(ngModel)]="keyword">
-    <button (click)="searchProduct()" class="btn btn-outline-success">
+    <button (click)="getProduct()" class="btn btn-outline-success">
       <i class="bi bi-search"></i>
     </button>
   </div>
 
-  <button class="btn btn-outline-success mt-4" routerLink="/newproducts">
+  <button class="btn btn-outline-success mt-4 " routerLink="/newproducts">
     Ajouter Produit <i class="bi bi-plus-circle text-success"></i>
   </button>
-
+  <button class="btn btn-success mt-4" style="margin-left: 20px" >
+    Nombre total d'article : {{totalproducts}}
+  </button>
   <div class="row mt-4">
     <div *ngFor="let p of products" class="col-md-4 mb-4">
       <div class="card">
@@ -33,5 +35,11 @@
       </div>
     </div>
   </div>
-
+  <ul class="nav nav-pills ">
+    <li *ngFor="let page of [].constructor(this.totalpages);let i=index">
+      <button (click)="hadledotopage(i)" [ngClass]="currentPage==(i)?'btn btn-success m-1':'btn btn-outline-success m-1'">
+        {{i+1}}
+      </button>
+    </li>
+  </ul>
 </div>

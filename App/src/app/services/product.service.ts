@@ -10,8 +10,8 @@ export class ProductService {
   private url ="http://localhost:8088/INVENTORY-SERVICE/Addproducts";
   constructor(private http:HttpClient) { }
 
-  public getProducts():Observable<Array<Product>>{
-    return this.http.get<Array<Product>>("http://localhost:8088/INVENTORY-SERVICE/productsAl")
+  public getProducts(keyword:string="",page:number=0,size:number=3):Observable<Array<Product>>{
+    return this.http.get<Array<Product>>(`http://localhost:8088/INVENTORY-SERVICE/products/search/keyword?name=${keyword}&page=${page}&size=${size}`)
   }
 
   public deleteProducts(product:Product){
