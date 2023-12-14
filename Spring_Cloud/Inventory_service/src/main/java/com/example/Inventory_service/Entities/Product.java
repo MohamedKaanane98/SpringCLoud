@@ -1,5 +1,6 @@
 package com.example.Inventory_service.Entities;
 
+import com.example.Inventory_service.Type;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,4 +20,6 @@ public class Product {
     private String image ;
     @Column(columnDefinition = "TEXT")
     private String Description;
+    @Enumerated(EnumType.STRING)
+    private Type categorie;
 }

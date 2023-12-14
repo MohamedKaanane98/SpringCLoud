@@ -7,22 +7,35 @@
     </button>
   </div>
 
-  <button class="btn btn-outline-success mt-4 " routerLink="/newproducts">
-    Ajouter Produit <i class="bi bi-plus-circle text-success"></i>
-  </button>
-  <button class="btn btn-success mt-4" style="margin-left: 20px" >
-    Nombre total d'article : {{totalproducts}}
-  </button>
+  <div class="d-flex align-items-center">
+    <button class="btn btn-outline-success mt-4" routerLink="/newproducts">
+      Ajouter Produit <i class="bi bi-plus-circle text-success"></i>
+    </button>
+
+    <button class="btn btn-success mt-4" style="margin-left: 20px">
+      Nombre total d'articles : {{totalproducts}}
+    </button>
+
+    <div class="input-group" style="margin-top: 10px; margin-left: 20px;">
+      <label class="input-group-text" for="categories">Choisissez une catégorie :</label>
+      <select class="input-group-text form-select" id="categories" [(ngModel)]="selectedCategory" (ngModelChange)="onCategoryChange()">
+        <option></option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+  </div>
+
   <div class="row mt-4">
     <div *ngFor="let p of products" class="col-md-4 mb-4">
       <div class="card">
         <a [routerLink]="['/detailsproducts', p.id]">
           <div *ngIf="p.image">
-            <img [ngSrc]="p.image" class="card-img-top bordered-image" alt="{{ p.name }}" width="50" height="350">
+            <img [src]="p.image" class="card-img-top bordered-image" alt="{{ p.name }}" width="50" height="350">
           </div>
         </a>
         <div class="card-body">
           <h5 class="card-title">{{ p.name }}</h5>
+          <p class="card-text">Catégorie: {{ p.categorie }}</p>
           <p class="card-text">Descrition: {{ p.description | slice:0:100  }}...</p>
           <p class="card-text">Price: {{ p.price }}</p>
           <button (click)="handleDelete(p)" class="btn btn-outline-danger ms-2">

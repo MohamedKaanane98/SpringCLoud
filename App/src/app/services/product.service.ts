@@ -10,8 +10,14 @@ export class ProductService {
   private url ="http://localhost:8088/INVENTORY-SERVICE/Addproducts";
   constructor(private http:HttpClient) { }
 
+  public getAllProducts():Observable<Array<Product>>{
+    return this.http.get<Array<Product>>(`http://localhost:8088/INVENTORY-SERVICE/products`)
+  }
   public getProducts(keyword:string="",page:number=0,size:number=3):Observable<Array<Product>>{
     return this.http.get<Array<Product>>(`http://localhost:8088/INVENTORY-SERVICE/products/search/keyword?name=${keyword}&page=${page}&size=${size}`)
+  }
+  public getProductsbyCategorie(categorie:any,page:number=0,size:number=3):Observable<Array<Product>>{
+    return this.http.get<Array<Product>>(`http://localhost:8088/INVENTORY-SERVICE/products/search/categorie?categorie=${categorie}&page=${page}&size=${size}`)
   }
 
   public deleteProducts(product:Product){

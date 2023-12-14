@@ -1,6 +1,7 @@
 package com.example.Inventory_service.repositories;
 
 import com.example.Inventory_service.Entities.Product;
+import com.example.Inventory_service.Type;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,5 +17,9 @@ import java.util.List;
 public interface ProductRepositorie extends JpaRepository<Product,Long> {
     @RestResource(path="keyword", rel="keyword")
     Page<Product> findAllByNameContainingIgnoreCase(@Param("name") String name, Pageable pageable);
+
+    @RestResource(path="categorie", rel="categorie")
+    Page<Product> findAllByCategorie(@Param("categorie") Type categorie, Pageable pageable);
+
 }
 

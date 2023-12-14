@@ -11,30 +11,47 @@ import {Router} from "@angular/router";
 })
 export class ProductsComponent implements OnInit {
   products : Array<Product>=[];
+  productsAll : Array<Product>=[];
+  categories : Array<any>=[];
   public keyword:string="";
-  totalpages:number=0;
-  pageSize:number=3;
+  totalpages!:number;
+  pageSize:number=6;
   currentPage:number=0;
-  totalproducts:number=0;
+  totalproducts!:number;
+  selectedCategory:string="";
 
-  constructor(private router:Router,private productservice:ProductService) {
+  constructor(private router:Router,private productservice:ProductService,private http:HttpClient) {
   }
 
   ngOnInit(): void {
-      this.getProduct()
+    this.getProduct();
+    this.productservice.getAllProducts().subscribe({
+      next: (data) => {
+        // @ts-ignore
+        this.productsAll = data._embedded.products;
+        for (let i = 0; i < this.productsAll.length; i++) {
+          this.categories.push(this.productsAll[i].categorie);
+          this.categories = Array.from(new Set(this.categories));
+        }
+      }
+    });
   }
 
   getProduct(){
+    this.currentPage=0;
     this.productservice.getProducts(this.keyword,this.currentPage,this.pageSize).subscribe({
       next: (data) => {
         // @ts-ignore
-          this.products = data._embedded.products;
-          // @ts-ignore
-          this.totalproducts = data.page.totalElements;
-          this.totalpages=Math.floor(this.totalproducts/this.pageSize);
-          if(this.totalproducts % this.pageSize !=0){
-            this.totalpages=this.totalpages+1;
-          }
+        this.products = data._embedded.products;
+        // @ts-ignore
+        this.totalproducts = data.page.totalElements;
+        // @ts-ignore
+        this.totalpages=data.page.totalPages;
+        // @ts-ignore
+        this.currentPage=data.page.number;
+        if(this.totalproducts==0){
+          alert("Aucun Article Trouvé")
+        }
       },
       error: err => {
         console.log(err)
@@ -48,15 +65,51 @@ export class ProductsComponent implements OnInit {
           this.getProduct();
         }
       })
+    console.log(this.totalproducts);
   }
 
   handleEdit(p: Product) {
-      this.router.navigateByUrl("/editproduct/"+p.id);
+    this.router.navigateByUrl("/editproduct/"+p.id);
   }
 
-    hadledotopage(page: number) {
-      this.currentPage=page;
-      this.getProduct();
+  hadledotopage(page: number) {
+    this.currentPage=page;
+    this.productservice.getProducts(this.keyword,this.currentPage,this.pageSize).subscribe({
+      next: (data) => {
+        // @ts-ignore
+        this.products = data._embedded.products;
+        // @ts-ignore
+        this.totalproducts = data.page.totalElements;
+        // @ts-ignore
+        this.totalpages=data.page.totalPages;
+        // @ts-ignore
+        this.currentPage=data.page.number;
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
+  }
+
+  onCategoryChange() {
+    if(this.selectedCategory.length!=0){
+    this.productservice.getProductsbyCategorie(this.selectedCategory,0,this.pageSize).subscribe({
+      next:(data)=>{
+        // @ts-ignore
+        this.products = data._embedded.products;
+        // @ts-ignore
+        this.totalproducts = data.page.totalElements;
+        // @ts-ignore
+        this.totalpages=data.page.totalPages;
+        // @ts-ignore
+        this.currentPage=data.page.number;
+    },
+      error: err => {
+        console.log(err)
+      }
+    })
     }
+    else this.getProduct();
+  }
 }
 
