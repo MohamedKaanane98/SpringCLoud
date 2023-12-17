@@ -5,10 +5,13 @@
     <button (click)="getProduct()" class="btn btn-outline-success">
       <i class="bi bi-search"></i>
     </button>
+    <div style="margin-left: 20px;" *ngIf="securityService.kc.authenticated">
+    <i class="input-group-text bi bi-cart"> : {{panier.length}}</i>
+    </div>
   </div>
 
   <div class="d-flex align-items-center">
-    <button class="btn btn-outline-success mt-4" routerLink="/newproducts">
+    <button *ngIf="securityService.kc.hasRealmRole('Admin')" class="btn btn-outline-success mt-4" routerLink="/newproducts">
       Ajouter Produit <i class="bi bi-plus-circle text-success"></i>
     </button>
 
@@ -38,11 +41,14 @@
           <p class="card-text">Catégorie: {{ p.categorie }}</p>
           <p class="card-text">Descrition: {{ p.description | slice:0:100  }}...</p>
           <p class="card-text">Price: {{ p.price }}</p>
-          <button (click)="handleDelete(p)" class="btn btn-outline-danger ms-2">
+          <button *ngIf="securityService.kc.hasRealmRole('Admin')" (click)="handleDelete(p)" class="btn btn-outline-danger ms-2">
             <i class="bi bi-trash"></i> Delete
           </button>
-          <button (click)="handleEdit(p)" class="btn btn-outline-secondary ms-2">
+          <button *ngIf="securityService.kc.hasRealmRole('Admin')" (click)="handleEdit(p)" class="btn btn-outline-secondary ms-2">
             <i class="bi bi-pencil"></i> Edit
+          </button>
+          <button *ngIf="securityService.kc.authenticated" (click)="ajouterauPanier(p)" class="btn btn-outline-secondary ms-2">
+            <i class="bi bi-plus-circle-fill"></i> Ajouter Au Panier
           </button>
         </div>
       </div>

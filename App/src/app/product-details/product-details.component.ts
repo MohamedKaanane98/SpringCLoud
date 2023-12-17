@@ -12,6 +12,7 @@ import {Product} from "../model/product.model";
 export class ProductDetailsComponent implements OnInit{
   productid!:number;
   product !:Product;
+  similarPro :Array<Product>=[];
   constructor(private route:ActivatedRoute,private productservice:ProductService,private fb :FormBuilder,private router : Router) {
 
   }
@@ -19,8 +20,15 @@ export class ProductDetailsComponent implements OnInit{
     this.productid=this.route.snapshot.params["id"];
     this.productservice.getproductbyid(this.productid).subscribe({
       next:(data) => {
-          this.product=data;
-          console.log(this.product)
+        this.product=data;
+        /*if(this.product && this.product.categorie){
+          this.productservice.getProductsbyCategorie(this.product.categorie,0,3).subscribe({
+            next:(data)=>{
+              //@ts-ignore
+              this.similarPro=data._embedded.products
+            }
+          })
+        }*/
       }
     })
   }

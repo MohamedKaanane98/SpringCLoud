@@ -26,6 +26,10 @@ export class CustomerService {
     return this.http.get<Customer>(`http://localhost:8088/CUSTOMER-SERVICE/customers/${CustomerId}`)
   }
 
+  public getcustomerbyname(CustomerName: string):Observable<Customer> {
+    return this.http.get<Customer>(`http://localhost:8088/CUSTOMER-SERVICE/customers/search/name?name=${CustomerName}`)
+  }
+
   public updateCustomer(customer: any):Observable<Customer>{
     return this.http.put<Customer>(`http://localhost:8088/CUSTOMER-SERVICE/customers/${customer.id}`,customer);
 

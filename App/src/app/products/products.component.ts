@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {ProductService} from "../services/product.service";
 import {Product} from "../model/product.model";
 import {Router} from "@angular/router";
+import {FormsModule} from "@angular/forms";
+import {KeycloakSecurityService} from "../services/keycloak-security.service";
 
 @Component({
   selector: 'app-products',
@@ -12,6 +14,7 @@ import {Router} from "@angular/router";
 export class ProductsComponent implements OnInit {
   products : Array<Product>=[];
   productsAll : Array<Product>=[];
+  panier:Array<Product>=[];
   categories : Array<any>=[];
   public keyword:string="";
   totalpages!:number;
@@ -20,7 +23,8 @@ export class ProductsComponent implements OnInit {
   totalproducts!:number;
   selectedCategory:string="";
 
-  constructor(private router:Router,private productservice:ProductService,private http:HttpClient) {
+  constructor(private router:Router,private productservice:ProductService,public securityService:KeycloakSecurityService) {
+
   }
 
   ngOnInit(): void {
@@ -35,7 +39,12 @@ export class ProductsComponent implements OnInit {
         }
       }
     });
+    const storedPanier = localStorage.getItem('panier');
+    if (storedPanier) {
+      this.panier = JSON.parse(storedPanier);
+    }
   }
+
 
   getProduct(){
     this.currentPage=0;
@@ -111,5 +120,10 @@ export class ProductsComponent implements OnInit {
     }
     else this.getProduct();
   }
+
+  ajouterauPanier(p: Product) {
+        console.log("Ajouté Au panier"+p.id);
+  }
+
 }
 

@@ -17,7 +17,6 @@ public class CustomerController {
         return customerRepositories.findAll();
     }
 
-
     @PostMapping("/Addcustomer")
     public Customer save(@RequestBody Customer customer){
         return customerRepositories.save(customer);

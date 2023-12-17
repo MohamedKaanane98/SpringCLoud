@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, ApplicationRef, DoBootstrap, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,8 +19,14 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import {KeycloakSecurityService} from "./services/keycloak-security.service";
 
-
+/*
+export function kcfactory(kcSecurity:KeycloakSecurityService) {
+  return ()=>kcSecurity.init();
+}
+*/
+const keycloaksec=new KeycloakSecurityService();
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +51,20 @@ import { RegisterComponent } from './register/register.component';
     ReactiveFormsModule, FormsModule, NgOptimizedImage
 
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    /*{provide:APP_INITIALIZER,deps:[KeycloakSecurityService],useFactory:kcfactory,multi:true}*/
+    {provide:KeycloakSecurityService,useValue:keycloaksec}
+  ],
+  /*bootstrap: [AppComponent]*/
 })
-export class AppModule { }
+export class AppModule implements DoBootstrap{
+  ngDoBootstrap(appRef: ApplicationRef): void {
+    keycloaksec.init()
+      .then(authenticated =>{
+        console.log(authenticated);
+        appRef.bootstrap(AppComponent)
+      }).catch(err=>{
+        console.log(err);
+    })
+  }
+}
