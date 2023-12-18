@@ -21,9 +21,9 @@ public class CustomerServiceApplication {
 	CommandLineRunner start(CustomerRepositories customerRepositories, RepositoryRestConfiguration repositoryRestConfiguration){
 		return args -> {
 			repositoryRestConfiguration.exposeIdsFor(Customer.class);
-			customerRepositories.save(new Customer(null,"EMSI","emsi@emsi-edu.ma","azerty12"));
-			customerRepositories.save(new Customer(null,"ENCG","encg@encg-edu.ma","azerty12"));
-			customerRepositories.save(new Customer(null,"FST","fst@fst-edu.ma","azerty12"));
+			customerRepositories.save(new Customer(null,"EMSI","emsi@emsi-edu.ma","Casablanca","0600112233"));
+			customerRepositories.save(new Customer(null,"ENCG","encg@encg-edu.ma","Rabat","0600112233"));
+			customerRepositories.save(new Customer(null,"FST","fst@fst-edu.ma","Mohamadia","0600112233"));
 		};
 	}
 }

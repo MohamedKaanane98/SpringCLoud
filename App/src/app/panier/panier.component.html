@@ -18,9 +18,12 @@
       <td>{{p.name}}</td>
       <td>{{p.categorie}}</td>
       <td>{{p.price}}</td>
-      <td>{{p.quantite}}
-        <button (click)="augmenter(p)" class="bi bi-plus"></button>
-        <button (click)="diminuer(p)" class="bi bi-minus"></button>
+      <td>
+        <div class="input-step">
+          <button type="button" class="minus" (click)="diminuer(p)">–</button>
+          <input type="text"  value="{{p.quantite}}" >
+          <button type="button" class="plus" (click)="augmenter(p)">+</button>
+        </div>
       </td>
       <td>{{p.price*p.quantite}}</td>
     </tr>
@@ -28,4 +31,5 @@
       <label style="margin-top: 10px"><b>Total Amount :</b> {{totalAmount}}</label>
 </table>
 </div>
+  <button style="margin-top: 10px" class="btn btn-success" (click)="checkout()">Checkout</button>
 </div>

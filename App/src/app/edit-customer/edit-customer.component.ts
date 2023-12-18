@@ -21,7 +21,9 @@ export class EditCustomerComponent implements OnInit{
         this.CustomerFormGroup=this.fb.group({
           id:this.fb.control(product.id),
           name:this.fb.control(product.name),
-          email:this.fb.control(product.email)
+          email:this.fb.control(product.email),
+          adresse:this.fb.control(product.adresse),
+          telephone:this.fb.control(product.telephone)
         })
       }
     })

@@ -14,5 +14,6 @@ public class Customer {
     Long id;
     String name;
     String email;
-    String password;
+    String adresse;
+    String telephone;
 }

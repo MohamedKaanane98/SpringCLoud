@@ -26,6 +26,9 @@ export class CustomerService {
     return this.http.get<Customer>(`http://localhost:8088/CUSTOMER-SERVICE/customers/${CustomerId}`)
   }
 
+  public getcustomerbyemail(Customeremail: string):Observable<Customer> {
+    return this.http.get<Customer>(`http://localhost:8088/CUSTOMER-SERVICE/customers/search/email?email=${Customeremail}`)
+  }
   public getcustomerbyname(CustomerName: string):Observable<Customer> {
     return this.http.get<Customer>(`http://localhost:8088/CUSTOMER-SERVICE/customers/search/name?name=${CustomerName}`)
   }

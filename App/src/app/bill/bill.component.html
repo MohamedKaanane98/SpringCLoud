@@ -7,13 +7,17 @@
         <th>ID</th>
         <th>Nom</th>
         <th>Email</th>
+        <th>Adresse</th>
+        <th>Telephone</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
+      <tr *ngIf="customer">
         <td>{{CustomerID}}</td>
         <td>{{customerName}}</td>
         <td>{{customerEmail}}</td>
+        <td>{{customer.adresse}}</td>
+        <td>{{customer.telephone}}</td>
       </tr>
       </tbody>
     </table>
@@ -35,6 +39,7 @@
       <td>{{p.quantite}}</td>
     </tr>
     </tbody>
+    <label style="margin-top: 10px"><b>Total Amount :</b> {{totalAmount}}</label>
   </table>
 
   <table class="table" style="margin-top: 30px;" *ngIf="bills">

@@ -18,8 +18,8 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/about">About Us</a>
         </li>
-        <div class="dropdown" style="margin-left: 700px;">
-          <span class="text-white" *ngIf="securityService.kc.authenticated">{{securityService.kc.tokenParsed?.["name"]}}</span>
+        <div class="dropdown" style="margin-left: 650px;">
+          <span class="text-white" *ngIf="securityService.kc.authenticated">{{securityService.kc.tokenParsed?.["preferred_username"]}}</span>
           <button style="margin-left: 10px" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Log Menu
           </button>

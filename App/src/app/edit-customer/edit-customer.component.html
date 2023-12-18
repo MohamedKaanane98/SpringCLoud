@@ -8,9 +8,13 @@
                 <div >
                     <label class="input-group-text" style="margin-top: 10px;">Name:</label>
                     <input type="text" class="form-control" formControlName="name">
-                    <label class="input-group-text" style="margin-top: 10px;">Price:</label>
+                    <label class="input-group-text" style="margin-top: 10px;">Email:</label>
                     <input type="text" class="form-control" formControlName="email">
-                    <button class="btn btn-outline-success" style="margin-top: 10px;" [disabled]="CustomerFormGroup.invalid">Modifier</button>
+                    <label class="input-group-text" style="margin-top: 10px;">Adresse:</label>
+                    <input type="text" class="form-control" formControlName="adresse">
+                    <label class="input-group-text" style="margin-top: 10px;">Téléphone:</label>
+                    <input type="text" class="form-control" formControlName="telephone">
+                    <button class="btn btn-outline-success" style="margin-top: 10px;" [disabled]="CustomerFormGroup.invalid">Update</button>
                 </div>
             </form>
         </div>

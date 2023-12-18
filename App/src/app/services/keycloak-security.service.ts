@@ -10,7 +10,7 @@ declare var Keycloak:any;
 export class KeycloakSecurityService {
   public kc:any;
   //@ts-ignore
-  customer: Customer = { id:null ,name: '', email: '' };
+  customer: Customer = { id:null ,name: '', email: '' ,adresse:null,telephone:null};
   constructor() {
   }
   init(){

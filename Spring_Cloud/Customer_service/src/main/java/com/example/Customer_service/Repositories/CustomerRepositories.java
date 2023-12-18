@@ -16,4 +16,7 @@ import java.util.List;
 public interface CustomerRepositories extends JpaRepository<Customer, Long> {
     @RestResource(path="name")
     Page<Customer> findByName(@Param("name") String Name, Pageable pageable);
+
+    @RestResource(path="email")
+    Page<Customer> findByEmail(@Param("email") String Email, Pageable pageable);
 }
