@@ -5,9 +5,9 @@
     <button (click)="getProduct()" class="btn btn-outline-success">
       <i class="bi bi-search"></i>
     </button>
-    <div style="margin-left: 20px;" *ngIf="securityService.kc.authenticated">
-    <i class="input-group-text bi bi-cart"> : {{panier.length}}</i>
-    </div>
+    <button style="margin-left: 20px;" (click)="panier(selectedProduct)" *ngIf="securityService.kc.authenticated">
+      <i class="input-group-text bi bi-cart"> : {{selectedProduct.length}}</i>
+    </button>
   </div>
 
   <div class="d-flex align-items-center">
@@ -47,9 +47,14 @@
           <button *ngIf="securityService.kc.hasRealmRole('Admin')" (click)="handleEdit(p)" class="btn btn-outline-secondary ms-2">
             <i class="bi bi-pencil"></i> Edit
           </button>
-          <button *ngIf="securityService.kc.authenticated" (click)="ajouterauPanier(p)" class="btn btn-outline-secondary ms-2">
-            <i class="bi bi-plus-circle-fill"></i> Ajouter Au Panier
+          <button *ngIf="securityService.kc.authenticated"  (click)="!p.selected?ajouterauPanier(p):supprimerdupanier(p)" [ngClass]="p.selected?'btn btn-outline-danger m-1':'btn btn-outline-success m-1'">
+            <i [ngClass]="p.selected?'bi bi-file-minus ':'bi bi-plus'"></i> {{p.selected? "Enlever du Panier":"Ajouter Au Panier"}}
           </button>
+          <!--
+          <div class="input-group">
+            <label class="input-group-text"><b>Quantite :</b></label>
+          <input class="form-control" type="text" style="width: 10px;" [(ngModel)]="p.quantite">
+          </div> -->
         </div>
       </div>
     </div>

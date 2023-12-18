@@ -20,6 +20,7 @@ import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {KeycloakSecurityService} from "./services/keycloak-security.service";
+import { PanierComponent } from './panier/panier.component';
 
 /*
 export function kcfactory(kcSecurity:KeycloakSecurityService) {
@@ -43,6 +44,7 @@ const keycloaksec=new KeycloakSecurityService();
     AboutComponent,
     LoginComponent,
     RegisterComponent,
+    PanierComponent,
   ],
   imports: [
     BrowserModule,

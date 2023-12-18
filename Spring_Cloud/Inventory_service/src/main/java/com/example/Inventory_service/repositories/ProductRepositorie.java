@@ -21,5 +21,6 @@ public interface ProductRepositorie extends JpaRepository<Product,Long> {
     @RestResource(path="categorie", rel="categorie")
     Page<Product> findAllByCategorie(@Param("categorie") Type categorie, Pageable pageable);
 
+
 }
 

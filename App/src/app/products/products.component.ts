@@ -14,7 +14,6 @@ import {KeycloakSecurityService} from "../services/keycloak-security.service";
 export class ProductsComponent implements OnInit {
   products : Array<Product>=[];
   productsAll : Array<Product>=[];
-  panier:Array<Product>=[];
   categories : Array<any>=[];
   public keyword:string="";
   totalpages!:number;
@@ -22,12 +21,19 @@ export class ProductsComponent implements OnInit {
   currentPage:number=0;
   totalproducts!:number;
   selectedCategory:string="";
+  selectedProduct:Array<Product>=[];
+  quantite: number=0;
 
   constructor(private router:Router,private productservice:ProductService,public securityService:KeycloakSecurityService) {
 
   }
 
   ngOnInit(): void {
+    const storedData = localStorage.getItem('selectedProduct');
+    if (storedData) {
+      this.selectedProduct = JSON.parse(storedData);
+      console.log(storedData);
+    }
     this.getProduct();
     this.productservice.getAllProducts().subscribe({
       next: (data) => {
@@ -39,10 +45,6 @@ export class ProductsComponent implements OnInit {
         }
       }
     });
-    const storedPanier = localStorage.getItem('panier');
-    if (storedPanier) {
-      this.panier = JSON.parse(storedPanier);
-    }
   }
 
 
@@ -52,6 +54,13 @@ export class ProductsComponent implements OnInit {
       next: (data) => {
         // @ts-ignore
         this.products = data._embedded.products;
+        for(let c of this.products){
+            for(let s of this.selectedProduct){
+                if(c.id==s.id){
+                  c.selected=s.selected;
+                }
+            }
+        }
         // @ts-ignore
         this.totalproducts = data.page.totalElements;
         // @ts-ignore
@@ -122,8 +131,47 @@ export class ProductsComponent implements OnInit {
   }
 
   ajouterauPanier(p: Product) {
-        console.log("Ajouté Au panier"+p.id);
+    //if(!isNaN(p.quantite)) {
+      let trouve=false;
+      p.selected=true;
+      p.quantite = 1;
+      for (let c of this.selectedProduct) {
+          if (c.id == p.id) {
+              alert("Deja dans le Panier")
+              trouve=true;
+              break;
+          }
+      }
+      if(trouve==false) this.selectedProduct.push(p);
+      /*
+      if (!p.selected) {
+        this.selectedProduct = this.selectedProduct.filter(s => s.id != p.id)
+      } else {
+          for (let c of this.selectedProduct) {
+              if (c.id == p.id) {
+                  alert("Deja dans le Panier")
+              }else {
+                alert("ajouté");
+                this.selectedProduct.push(c);
+              }
+          }
+          p.quantite = 1;
+      }*/
+      localStorage.setItem('selectedProduct', JSON.stringify(this.selectedProduct));
+      console.log(this.selectedProduct);
+    //}else alert("Saisir la Quantite");
   }
 
+    panier(selectedProduct: Array<Product>) {
+      this.router.navigate(['/panier'], { queryParams: { products: encodeURIComponent(JSON.stringify(selectedProduct)) } });
+
+    }
+
+    supprimerdupanier(p: Product) {
+        p.selected=false;
+        this.selectedProduct = this.selectedProduct.filter(s => s.id != p.id)
+        localStorage.setItem('selectedProduct', JSON.stringify(this.selectedProduct));
+        console.log(this.selectedProduct);
+    }
 }
 

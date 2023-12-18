@@ -13,11 +13,13 @@ import {HomeComponent} from "./home/home.component";
 import {AboutComponent} from "./about/about.component";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
+import {PanierComponent} from "./panier/panier.component";
 
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
   {path:"products",component:ProductsComponent},
+  {path:"panier",component:PanierComponent},
   {path:"customers",component:CustomersComponent},
   {path:"bill/:Customerid",component:BillComponent},
   {path:"billDetails/:Billid",component:BillDetailsComponent},

@@ -13,6 +13,11 @@ export class ProductService {
   public getAllProducts():Observable<Array<Product>>{
     return this.http.get<Array<Product>>(`http://localhost:8088/INVENTORY-SERVICE/products`)
   }
+
+  public getAllSelectedProducts():Observable<Array<Product>>{
+    return this.http.get<Array<Product>>(`http://localhost:8088/INVENTORY-SERVICE/products/search/selected`)
+  }
+
   public getProducts(keyword:string="",page:number=0,size:number=3):Observable<Array<Product>>{
     return this.http.get<Array<Product>>(`http://localhost:8088/INVENTORY-SERVICE/products/search/keyword?name=${keyword}&page=${page}&size=${size}`)
   }
@@ -37,4 +42,5 @@ export class ProductService {
     return this.http.put<Product>(`http://localhost:8088/INVENTORY-SERVICE/products/${product.id}`,product);
 
   }
+
 }

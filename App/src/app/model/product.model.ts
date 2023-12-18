@@ -5,4 +5,6 @@ export interface Product{
   image:string,
   description:string,
   categorie:any,
+  selected:boolean,
+  quantite:number,
 }

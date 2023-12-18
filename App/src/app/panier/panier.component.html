@@ -1,0 +1,31 @@
+<div class="container" style="margin-top: 10px">
+<div class="card">
+  <div class="card-header"><b>Panier : </b></div>
+    <table class="table" style="margin-top: 10px;" *ngIf="selectedProduct">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Categorie</th>
+      <th>Price</th>
+      <th>Quantité</th>
+      <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of selectedProduct">
+      <td>{{p.id}}</td>
+      <td>{{p.name}}</td>
+      <td>{{p.categorie}}</td>
+      <td>{{p.price}}</td>
+      <td>{{p.quantite}}
+        <button (click)="augmenter(p)" class="bi bi-plus"></button>
+        <button (click)="diminuer(p)" class="bi bi-minus"></button>
+      </td>
+      <td>{{p.price*p.quantite}}</td>
+    </tr>
+    </tbody>
+      <label style="margin-top: 10px"><b>Total Amount :</b> {{totalAmount}}</label>
+</table>
+</div>
+</div>
