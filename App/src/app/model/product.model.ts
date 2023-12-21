@@ -7,4 +7,5 @@ export interface Product{
   categorie:any,
   selected:boolean,
   quantite:number,
+  commentaire:string,
 }

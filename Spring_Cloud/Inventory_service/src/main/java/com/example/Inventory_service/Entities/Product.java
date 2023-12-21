@@ -9,6 +9,9 @@ import org.hibernate.type.TextType;
 import org.w3c.dom.Text;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
+
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor @ToString
@@ -22,4 +25,6 @@ public class Product {
     private String Description;
     @Enumerated(EnumType.STRING)
     private Type categorie;
+    @OneToMany(mappedBy = "product")
+    private List<Commentaire> commentaires;
 }

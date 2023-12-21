@@ -3,6 +3,13 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "../services/product.service";
 import {FormBuilder} from "@angular/forms";
 import {Product} from "../model/product.model";
+import {HttpClient} from "@angular/common/http";
+import {KeycloakSecurityService} from "../services/keycloak-security.service";
+
+interface Commentaire {
+  nomUser:String,
+  message:String,
+}
 
 @Component({
   selector: 'app-product-details',
@@ -13,7 +20,10 @@ export class ProductDetailsComponent implements OnInit{
   productid!:number;
   product !:Product;
   similarPro :Array<Product>=[];
-  constructor(private route:ActivatedRoute,private productservice:ProductService,private fb :FormBuilder,private router : Router) {
+  commentaires:Array<Commentaire>=[];
+  message:Array<String>=[];
+
+  constructor(private route:ActivatedRoute,private productservice:ProductService,private http:HttpClient,public router : Router,public keycloakservice:KeycloakSecurityService) {
 
   }
   ngOnInit(): void {
@@ -29,6 +39,17 @@ export class ProductDetailsComponent implements OnInit{
             }
           })
         }*/
+      }
+    })
+    this.http.get(`http://localhost:8088/INVENTORY-SERVICE/products/${this.productid}/commentaires`).subscribe({
+      next:(data)=>{
+        //@ts-ignore
+        this.commentaires=data._embedded.commentaires;
+        for(let c of this.commentaires){
+          //@ts-ignore
+          this.message.push(c["message"])
+          console.log(this.message);
+        }
       }
     })
   }

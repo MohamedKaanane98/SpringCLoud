@@ -14,6 +14,7 @@ import {AboutComponent} from "./about/about.component";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {PanierComponent} from "./panier/panier.component";
+import {CommentaireComponent} from "./commentaire/commentaire.component";
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path:"editcustomer/:id",component:EditCustomerComponent},
   {path:"about",component:AboutComponent},
   {path:"login",component:LoginComponent},
-  {path:"register",component:RegisterComponent}
+  {path:"register",component:RegisterComponent},
+  {path:"commentaire/:productid",component:CommentaireComponent}
 ];
 
 @NgModule({

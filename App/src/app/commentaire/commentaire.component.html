@@ -1,0 +1,19 @@
+<div class="container" style="padding: 30px;">
+  <div class="card">
+    <div class="card-header bg-dark text-white">Ajouter Commentaire</div>
+    <form [formGroup]="CommentForm" (ngSubmit)="saveComment()" >
+      <div class="mb-3">
+        <label for="nomUser" class="form-label">Nom du Client :</label>
+        <input type="text" class="form-control" id="nomUser" formControlName="nomUser"  >
+      </div>
+
+      <div class="mb-3">
+        <label for="message" class="form-label">Commentaire :</label>
+        <input type="text" class="form-control" id="message" formControlName="message" placeholder="Entrez votre Commentaire">
+      </div>
+
+
+      <button class="btn btn-success" [disabled]="CommentForm.invalid">Ajouter Commentaire</button>
+    </form>
+  </div>
+</div>
