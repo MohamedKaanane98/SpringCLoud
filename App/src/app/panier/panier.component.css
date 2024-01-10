@@ -1,0 +1,61 @@
+.avatar-lg{
+  height:8rem;
+  width:8rem;
+}
+.rounded{
+  border-radius: 0.25rem;
+}
+.bg-light{
+  background-color: rgba(243, 246, 249,1);
+}
+.input-step{
+  border:1px solid #ced4da;
+  display:inline-flex;
+  overflow:visible;
+  height:37.5px;
+  border-radius:0.25rem;
+  background: #fff;
+  padding:4px;
+}
+.input-step button{
+  width:1.4em;
+  font-weight:300;
+  height:100%;
+  line-height:.1em;
+  font-size:1.4em;
+  padding:.2em!important;
+  background:#f3f6f9;
+  color:#212529;
+  border:none;
+  border-radius:0.25rem
+}
+.input-step input{
+  width:4em;
+  height:100%;
+  text-align:center;
+  border:0;
+  background:transparent;
+  color:#212529;
+  border-radius:0.25rem
+}
+.input-step input:focus-visible{outline:0}
+.btn-label{
+  position:relative;
+  padding-left:44px
+}
+.btn-label .label-icon{
+  position:absolute;
+  width:35.5px;
+  left:calc(1px * -1);
+  top:calc(1px * -1);
+  bottom:calc(1px * -1);
+  background-color:#ffffff1a;
+  font-size:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+
+.btn-label.right{
+  padding-left:.9rem;
+  padding-right:44px}

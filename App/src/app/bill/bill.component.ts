@@ -6,6 +6,8 @@ import {ProductService} from "../services/product.service";
 import {Product} from "../model/product.model";
 import {CustomerService} from "../services/customer.service";
 import {Customer} from "../model/customer.model";
+import {BillModel} from "../model/bill.model";
+
 
 @Component({
   selector: 'app-bill',
@@ -20,12 +22,12 @@ export class BillComponent implements OnInit {
   customerEmail:string="";
   customer!:Customer;
   totalAmount:number=0;
-
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute,public securityService:KeycloakSecurityService,public customerService:CustomerService) {
     this.CustomerID = route.snapshot.params["Customerid"];
   }
 
   ngOnInit(): void {
+    // @ts-ignore
     if (!this.securityService.kc.authenticated) {
       alert("Accées Non Autorisées")
       this.router.navigateByUrl("");
@@ -68,5 +70,10 @@ export class BillComponent implements OnInit {
 
   getBillDetails(b: any) {
     this.router.navigateByUrl("/billDetails/"+b.id)
+  }
+
+  savebill() {
+    alert("votre Commande est Acceptée , notre service Client va vous contacter afin de confirmer les informations necessaires , A bientot");
+    this.router.navigateByUrl("/products");
   }
 }

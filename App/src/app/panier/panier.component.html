@@ -1,3 +1,4 @@
+<!--
 <div class="container" style="margin-top: 10px">
 <div class="card">
   <div class="card-header"><b>Panier : </b></div>
@@ -31,5 +32,108 @@
       <label style="margin-top: 10px"><b>Total Amount :</b> {{totalAmount}}</label>
 </table>
 </div>
-  <button style="margin-top: 10px" class="btn btn-success" (click)="checkout()">Checkout</button>
+  <button *ngIf="selectedProduct.length!=0" style="margin-top: 10px" class="btn btn-success" (click)="checkout()">Checkout</button>
 </div>
+-->
+<div class="row mb-3" style="margin-top: 20px">
+  <div class="col-xl-8">
+    <div class="row align-items-center gy-3 mb-3">
+      <div class="col-sm">
+        <div>
+          <h5 class="fs-14 mb-0">Your Cart ({{selectedProduct.length}} items)</h5>
+        </div>
+      </div>
+      <div class="col-sm-auto">
+        <a routerLink="/products" class="text-success">Continue Shopping</a>
+      </div>
+    </div>
+    <div class="card product" *ngFor="let data of selectedProduct" id="cart-id{{data.id}}" style="margin-top: 15px">
+      <div class="card-body">
+        <div class="row gy-3">
+          <div class="col-sm-auto">
+            <div class="avatar-lg bg-light rounded p-1">
+              <img src="{{data.image}}" alt="" class="img-fluid d-block" >
+            </div>
+          </div>
+          <div class="col-sm">
+            <h5 class="fs-14 text-truncate"><b>{{data.name}}</b></h5>
+            <ul class="list-inline text-muted">
+              <li class="list-inline-item">Description : <span class="fw-medium">{{data.description| slice:0:100 }}...</span></li>
+            </ul>
+            <div class="input-step">
+              <button type="button" class="minus" (click)="diminuer(data)">–</button>
+              <input type="text" class="product-quantity" id="cart-{{data.id}}"
+                     value="{{data.quantite}}" min="0" max="100">
+              <button type="button" class="plus" (click)="augmenter(data)">+</button>
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="text-lg-end">
+              <p class="text-muted mb-1">Item Price:</p>
+              <h5 class="fs-14">$<span id="ticket_price" class="product-price">{{data.price}}</span></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- card body -->
+      <div class="card-footer">
+        <div class="row align-items-center gy-3">
+          <div class="col-sm-auto">
+            <div class="d-flex align-items-center gap-2 text-muted">
+              <div>Total :</div>
+              <h5 class="fs-14 mb-0">$<span class="product-line-price">{{data.price*data.quantite}}</span></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end card footer -->
+    </div>
+    <!-- end card -->
+
+
+    <div class="text-start mb-4">
+      <button *ngIf="selectedProduct.length!=0" style="margin-top: 10px" class="btn btn-success" (click)="checkout()">Checkout</button>
+    </div>
+  </div>
+  <!-- end col -->
+
+  <div class="col-xl-4">
+    <div class="sticky-side-div">
+      <div class="card">
+        <div class="card-header border-bottom-dashed">
+          <h5 class="card-title mb-0">Order Summary</h5>
+        </div>
+        <div class="card-body pt-2">
+          <div class="table-responsive">
+            <table class="table table-borderless mb-0">
+              <tbody>
+              <tr>
+                <td>Sub Total :</td>
+                <td class="text-end">$ <span id="cart-subtotal">{{totalAmount}}</span></td>
+              </tr>
+              <tr>
+                <td>Shipping Charge :</td>
+                <td class="text-end">$ <span id="cart-shipping">65</span></td>
+              </tr>
+              <tr class="table-active">
+                <th>Total (USD) :</th>
+                <td class="text-end">
+                                        <span class="fw-semibold">
+                                            $ <span id="cart-total">{{totalAmount+65}}</span>
+                                        </span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- end table-responsive -->
+        </div>
+      </div>
+
+
+    </div>
+    <!-- end stickey -->
+
+  </div>
+</div>
+

@@ -22,7 +22,6 @@ import { RegisterComponent } from './register/register.component';
 import {KeycloakSecurityService} from "./services/keycloak-security.service";
 import { PanierComponent } from './panier/panier.component';
 import { CommentaireComponent } from './commentaire/commentaire.component';
-
 /*
 export function kcfactory(kcSecurity:KeycloakSecurityService) {
   return ()=>kcSecurity.init();
