@@ -40,7 +40,7 @@
           <h5 class="card-title">{{ p.name }}</h5>
           <p class="card-text">Catégorie: {{ p.categorie }}</p>
           <p class="card-text">Descrition: {{ p.description | slice:0:100  }}...</p>
-          <p class="card-text">Price: {{ p.price }}</p>
+          <p class="card-text">Price: {{ p.price }} DHs</p>
           <button *ngIf="securityService.kc.hasRealmRole('Admin')" (click)="handleDelete(p)" class="btn btn-outline-danger ms-2">
             <i class="bi bi-trash"></i> Delete
           </button>

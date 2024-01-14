@@ -39,7 +39,7 @@
       <td>{{p.quantite}}</td>
     </tr>
     </tbody>
-    <label style="margin-top: 10px"><b>Total Amount :</b> {{totalAmount}}</label>
+    <label style="margin-top: 10px"><b>Total Amount :</b> {{totalAmount}} Dhs</label>
   </table>
 
   <table class="table" style="margin-top: 30px;" *ngIf="bills">
@@ -61,6 +61,6 @@
     </tr>
     </tbody>
   </table>
-    <button *ngIf="selectedproducts.length!=0" (click)="savebill()" style="width: 150px" class="btn btn-success">Payemant</button>
+    <button *ngIf="selectedproducts.length!=0" (click)="savebill()" style="width: 150px" class="btn btn-success">Confirmer</button>
 </div>
 </div>

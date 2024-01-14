@@ -70,7 +70,7 @@
           <div class="col-sm-auto">
             <div class="text-lg-end">
               <p class="text-muted mb-1">Item Price:</p>
-              <h5 class="fs-14">$<span id="ticket_price" class="product-price">{{data.price}}</span></h5>
+              <h5 class="fs-14"><span id="ticket_price" class="product-price">{{data.price}} Dhs</span></h5>
             </div>
           </div>
         </div>
@@ -81,7 +81,7 @@
           <div class="col-sm-auto">
             <div class="d-flex align-items-center gap-2 text-muted">
               <div>Total :</div>
-              <h5 class="fs-14 mb-0">$<span class="product-line-price">{{data.price*data.quantite}}</span></h5>
+              <h5 class="fs-14 mb-0"><span class="product-line-price">{{data.price*data.quantite}} Dhs</span></h5>
             </div>
           </div>
         </div>
@@ -109,17 +109,17 @@
               <tbody>
               <tr>
                 <td>Sub Total :</td>
-                <td class="text-end">$ <span id="cart-subtotal">{{totalAmount}}</span></td>
+                <td class="text-end">Dhs <span id="cart-subtotal">{{totalAmount}}</span></td>
               </tr>
               <tr>
                 <td>Shipping Charge :</td>
-                <td class="text-end">$ <span id="cart-shipping">65</span></td>
+                <td class="text-end">Dhs <span id="cart-shipping">65</span></td>
               </tr>
               <tr class="table-active">
-                <th>Total (USD) :</th>
+                <th>Total (DHs) :</th>
                 <td class="text-end">
                                         <span class="fw-semibold">
-                                            $ <span id="cart-total">{{totalAmount+65}}</span>
+                                            Dhs <span id="cart-total">{{totalAmount+65}}</span>
                                         </span>
                 </td>
               </tr>
