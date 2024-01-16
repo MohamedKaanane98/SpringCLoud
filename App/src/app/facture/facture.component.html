@@ -1,0 +1,14 @@
+<div style="margin-top: 20px;">
+  <h2>Liste des Factures</h2>
+  <ul *ngIf="Bills.length!=0">
+    <li *ngFor="let bill of Bills">
+      <h3>Bill ID: {{ bill.id }}</h3>
+      <!-- Display other bill details as needed -->
+      <p>Customer Adresse: {{ bill.customer.adresse }}</p>
+      <p>Billing Date: {{ bill.billingdate | date }}</p>
+      <p>Montant Total : {{ bill.total }}</p>
+      <!-- Add more properties as needed -->
+    </li>
+  </ul>
+  <h3 *ngIf="Bills.length==0">Vous n'avez Aucune Facture pour le Moment</h3>
+</div>

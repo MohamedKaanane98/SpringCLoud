@@ -54,6 +54,7 @@ export class AppComponent implements OnInit{
   onLogout() {
     this.securityService.kc.logout();
     localStorage.clear();
+    this.router.navigate(['/']);
   }
 
   onLogin() {

@@ -13,10 +13,12 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CommentaireComponent implements OnInit{
   CommentForm !:FormGroup
+  storedBills!:any
   productID!:number;
   constructor(private router :ActivatedRoute,private fb :FormBuilder, private productservice:ProductService,private keyclockservce:KeycloakSecurityService,private http:HttpClient,private route:Router) {
   }
   ngOnInit(): void {
+    this.storedBills = localStorage.getItem('bills');
     this.productID=this.router.snapshot.params["productid"];
     this.CommentForm=this.fb.group({
       nomUser:this.fb.control(this.keyclockservce.customer.name),

@@ -15,6 +15,7 @@ import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {PanierComponent} from "./panier/panier.component";
 import {CommentaireComponent} from "./commentaire/commentaire.component";
+import {FactureComponent} from "./facture/facture.component";
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
   {path:"about",component:AboutComponent},
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
-  {path:"commentaire/:productid",component:CommentaireComponent}
+  {path:"commentaire/:productid",component:CommentaireComponent},
+  {path:"mesfactures",component:FactureComponent},
 ];
 
 @NgModule({

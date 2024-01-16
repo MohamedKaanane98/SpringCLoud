@@ -22,6 +22,7 @@ import { RegisterComponent } from './register/register.component';
 import {KeycloakSecurityService} from "./services/keycloak-security.service";
 import { PanierComponent } from './panier/panier.component';
 import { CommentaireComponent } from './commentaire/commentaire.component';
+import { FactureComponent } from './facture/facture.component';
 /*
 export function kcfactory(kcSecurity:KeycloakSecurityService) {
   return ()=>kcSecurity.init();
@@ -46,6 +47,7 @@ const keycloaksec=new KeycloakSecurityService();
     RegisterComponent,
     PanierComponent,
     CommentaireComponent,
+    FactureComponent,
   ],
   imports: [
     BrowserModule,

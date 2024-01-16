@@ -164,7 +164,6 @@ export class ProductsComponent implements OnInit {
 
     panier(selectedProduct: Array<Product>) {
       this.router.navigate(['/panier'], { queryParams: { products: encodeURIComponent(JSON.stringify(selectedProduct)) } });
-
     }
 
     supprimerdupanier(p: Product) {

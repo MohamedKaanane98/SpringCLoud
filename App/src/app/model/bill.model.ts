@@ -7,4 +7,5 @@ export interface BillModel{
   customer:Customer,
   billingdate:Date,
   productItems:Array<Product>,
+  total:number,
 }

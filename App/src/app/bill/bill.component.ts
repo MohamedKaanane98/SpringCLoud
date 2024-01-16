@@ -16,6 +16,8 @@ import {BillModel} from "../model/bill.model";
 })
 export class BillComponent implements OnInit {
   bills: any;
+  AllBills!:Array<BillModel>;
+  Bills: BillModel | undefined;
   selectedproducts:Array<Product>=[];
   CustomerID !: number
   customerName:string="";
@@ -73,7 +75,37 @@ export class BillComponent implements OnInit {
   }
 
   savebill() {
-    alert("votre Commande est Acceptée , notre service Client va vous contacter afin de confirmer les informations necessaires , A bientot");
-    this.router.navigateByUrl("/products");
+    localStorage.setItem('selectedProduct',"");
+    localStorage.setItem('totalAmount',"")
+    this.Bills = {
+      id: Math.random(),
+      customerId: this.CustomerID,
+      customer: this.customer,
+      billingdate: new Date(),
+      productItems: this.selectedproducts,
+      total:this.totalAmount,
+    };
+
+    // Retrieve existing bills from localStorage
+    const storedBills = localStorage.getItem('bills') || '[]';
+    const existingBills: BillModel[] = JSON.parse(storedBills);
+
+    // Make sure existingBills is an array
+    if (!Array.isArray(existingBills)) {
+      console.error('Invalid data in localStorage. Resetting bills.');
+      localStorage.removeItem('bills');
+      return;
+    }
+
+    // Add the new bill to the existing bills
+    existingBills.push(this.Bills);
+
+    // Store the updated bills array in localStorage
+    localStorage.setItem('bills', JSON.stringify(existingBills));
+
+    // Alert and navigate to /mesfactures with the bills data in the URL
+    alert("Votre commande est acceptée, notre service client va vous contacter afin de confirmer les informations nécessaires. À bientôt");
+    this.router.navigateByUrl('/mesfactures');
   }
+
 }
